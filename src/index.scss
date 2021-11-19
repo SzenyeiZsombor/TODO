@@ -1,0 +1,107 @@
+@use 'variables' as v;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    background-color: v.$defaultBackgroundColor;
+    color: v.$defaultFontColor;
+  }
+  
+  
+  ul {
+    list-style: none;
+  }
+  
+  
+  h2 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    background-color: v.$btnColor;
+    border: 1px solid v.$btnColor;
+  }
+  
+  .check-box > * {
+     margin-top: 30px;
+  }
+  
+  .todo {
+    padding: 200px;
+  } 
+  
+  .todo > * {
+    max-width: 50%;
+    margin: auto;
+  }
+  
+  .input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.452);
+    font-size: 20px;
+
+        &:focus {
+            border: 2px solid v.$borderColor; 
+            box-shadow: 1px 1px 3px 3px #161616;
+          }
+  }
+
+  .check {
+    padding-left: 42%;
+    font-size: 25px;
+    display: block;
+    position: relative;
+
+        label {
+            display: inline-block;
+            padding: 10px 15px 15px 15px;
+            cursor: pointer;
+
+            &::before{
+                margin-left: 36%;
+                top: -4px;
+                left: -4px;
+                width: 50px;
+                height: 50px; 
+                content: "";
+                position: absolute;
+                border: 3px solid v.$borderColor;
+            }
+            
+            &::after {
+                content: "";
+                position: absolute;
+                top: 15px;
+                left: 12px;
+                width: 20px;
+                height: 8px;
+                transform: rotate(-45deg);
+                border: 5px solid v.$borderColor;
+                border-width: 0 0 5px 5px;
+                opacity: 0;
+                margin-left: 36%;
+            }
+        }
+
+        input {
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+
+                &:checked + label::after {
+                    opacity: 1;
+                }
+        }
+  }
